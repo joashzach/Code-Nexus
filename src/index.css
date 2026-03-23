@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import 'tailwindcss';
+
+/* ─── Base Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── Global Theme Transition ───────────────────────────────── */
+/* Targeted transitions for performance. Using * was causing browser hangs. */
+body, 
+.card, 
+nav, 
+header, 
+footer,
+button,
+input,
+select,
+span,
+h1, h2, h3, h4, h5, h6,
+p {
+  transition:
+    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color     0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    color            0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow       0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body { will-change: background-color, color; }
+.card { will-change: transform, box-shadow; }
+
+
+html {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+/* ─── LIGHT MODE (Default) ───────────────────────────────────── */
+body {
+  min-height: 100vh;
+  color: #1e1b4b;             /* deep indigo for all text — premium feel */
+  background-color: #fafaff;  /* barely tinted white */
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% -10%, rgba(139,92,246,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 110%, rgba(59,130,246,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 60% 50%,  rgba(236,72,153,0.04) 0%, transparent 50%);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ─── DARK MODE ──────────────────────────────────────────────── */
+html.dark body {
+  color: #e2e8f0;
+  background-color: #060612;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% -10%, rgba(139,92,246,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 110%, rgba(59,130,246,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 60% 50%,  rgba(236,72,153,0.06) 0%, transparent 50%);
+}
+
+/* ─── Glass Navbar ───────────────────────────────────────────── */
+.glass {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.80);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.12);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+html.dark .glass {
+  background-color: rgba(6, 6, 18, 0.85);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+}
+
+/* ─── Gradient Button ────────────────────────────────────────── */
+.gradient-btn {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+  background-size: 200% 200%;
+  animation: gradientFlow 4s ease infinite;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  border-radius: 9999px;
+  padding: 0.6rem 1.4rem;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.gradient-btn:hover::before { opacity: 1; }
+.gradient-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.50);
+}
+.gradient-btn:active { transform: scale(0.97) translateY(0); }
+.gradient-btn:disabled { opacity: 0.5; cursor: not-allowed; animation: none; }
+
+@keyframes gradientFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ─── Cards ──────────────────────────────────────────────────── */
+.card {
+  background-color: #ffffff;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(139, 92, 246, 0.10);
+  box-shadow:
+    0 0 0 1px rgba(139,92,246,0.04),
+    0 2px 4px rgba(0,0,0,0.04),
+    0 8px 24px rgba(139,92,246,0.06);
+  transition: box-shadow 0.35s ease, transform 0.35s ease, border-color 0.35s ease;
+}
+
+.card:hover {
+  border-color: rgba(139, 92, 246, 0.25);
+  box-shadow:
+    0 0 0 1px rgba(139,92,246,0.12),
+    0 4px 8px rgba(0,0,0,0.06),
+    0 20px 48px rgba(139,92,246,0.15);
+}
+
+html.dark .card {
+  background-color: rgba(15, 23, 42, 0.90);
+  border-color: rgba(139, 92, 246, 0.12);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3), 0 8px 24px rgba(139,92,246,0.08);
+}
+
+html.dark .card:hover {
+  border-color: rgba(139, 92, 246, 0.35);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4), 0 24px 56px rgba(139,92,246,0.18);
+}
+
+/* ─── Accent Text Colors ─────────────────────────────────────── */
+.text-muted      { color: #6b7280; }
+html.dark .text-muted { color: #94a3b8; }
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(139,92,246,0.3); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(139,92,246,0.5); }
+
+/* ─── Utility: line-clamp ─────────────────────────────────────── */
+.line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; }
+.line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+
+/* ─── Shimmering Skeleton ────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 0.5rem;
+}
+html.dark .skeleton {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ─── Floating Orb Background Decoration ────────────────────── */
+.orb {
+  position: fixed;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatOrb 10s ease-in-out infinite alternate;
+}
+@keyframes floatOrb {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  100% { transform: translate(30px, -30px) scale(1.08); }
+}
+
+/* ─── Glassy Inputs (light + dark) ───────────────────────────── */
+input, select, textarea {
+  font-family: inherit;
+  /* Light mode: semi-transparent with very slight blur tint */
+  background: rgba(249, 250, 255, 0.60);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(139, 92, 246, 0.16);
+  color: #1e1b4b;
+  border-radius: 14px;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease !important; /* override global theme transition for inputs */
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.14);
+  background: rgba(255, 255, 255, 0.80);
+}
+
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background: rgba(15, 23, 42, 0.55);
+  border-color: rgba(139, 92, 246, 0.22);
+  color: #e2e8f0;
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.18);
+  background: rgba(15, 23, 42, 0.80);
+}
+
+input::placeholder, textarea::placeholder { color: #94a3b8; }
+html.dark input::placeholder, html.dark textarea::placeholder { color: #64748b; }
