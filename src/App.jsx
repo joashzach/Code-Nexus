@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Marketplace from './pages/Marketplace';
@@ -14,12 +13,19 @@ function App() {
   return (
     <Router>
       {/* Toaster for global toast notifications */}
-      <Toaster position="top-center" toastOptions={{
-        style: { borderRadius: '12px', fontWeight: 600, background: '#0f172a', color: '#f1f5f9' }
+      <Toaster position="top-right" toastOptions={{
+        style: { 
+          borderRadius: '10px', 
+          fontWeight: 600, 
+          background: '#151B23', 
+          color: '#E6EDF3',
+          border: '1px solid #1F2933',
+          fontSize: '0.875rem'
+        }
       }} />
 
-      {/* Root wrapper: light bg + dark text as defaults */}
-      <div style={{ minHeight: '100vh', backgroundColor: 'inherit', color: 'inherit' }}>
+      {/* Root wrapper: Dark-first theme */}
+      <div style={{ minHeight: '100vh', backgroundColor: '#0B0F14', color: '#E6EDF3' }}>
         <Navbar />
 
         <main className="pb-20">
@@ -33,29 +39,41 @@ function App() {
 
         {/* Footer */}
         <footer style={{
-          borderTop: '1px solid #e2e8f0',
-          padding: '3rem 1rem',
+          background: '#0B0F14',
+          borderTop: '1px solid #1F2933',
+          padding: '4rem 1.5rem',
           textAlign: 'center',
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: '1.25rem' }}>
             <div style={{
-              width: 36, height: 36,
-              background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
-              borderRadius: 10,
+              width: 32, height: 32,
+              background: 'linear-gradient(135deg, #5B8CFF, #8B5CF6)',
+              borderRadius: 8,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              color: 'white', fontWeight: 800, fontSize: 13
+              color: 'white', fontWeight: 900, fontSize: 11
             }}>CN</div>
-            <span style={{ fontSize: '1.2rem', fontWeight: 800, color: 'inherit' }}>Code Nexus</span>
+            <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#E6EDF3', letterSpacing: '-0.02em' }}>Code Nexus</span>
           </div>
-          <p style={{ color: '#64748b', fontSize: '0.875rem', maxWidth: 320, margin: '0 auto 1.5rem' }}>
-            The world's first decentralized code marketplace. Built on the blockchain, owned by developers.
+          <p style={{ color: '#9AA4AF', fontSize: '0.9rem', maxWidth: 400, margin: '0 auto 2rem', lineHeight: 1.6 }}>
+            The world's first decentralized code marketplace. Built on the blockchain, owned by the developer community.
           </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '2.5rem', marginBottom: '2.5rem' }}>
             {['Docs', 'Twitter', 'Discord', 'GitHub'].map(l => (
-              <a key={l} href="#" style={{ color: '#94a3b8', fontWeight: 700, fontSize: '0.75rem', textDecoration: 'none', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{l}</a>
+              <a key={l} href="#" style={{ 
+                color: '#6B7280', 
+                fontWeight: 700, 
+                fontSize: '0.75rem', 
+                textDecoration: 'none', 
+                textTransform: 'uppercase', 
+                letterSpacing: '0.1em',
+                transition: 'color 0.2s ease'
+              }}
+                onMouseEnter={e => e.currentTarget.style.color = '#5B8CFF'}
+                onMouseLeave={e => e.currentTarget.style.color = '#6B7280'}
+              >{l}</a>
             ))}
           </div>
-          <p style={{ color: '#94a3b8', fontSize: '0.75rem' }}>© 2024 Code Nexus. All rights reserved.</p>
+          <p style={{ color: '#6B7280', fontSize: '0.75rem', fontWeight: 500 }}>© 2024 Code Nexus Labs. Distributed via decentralized protocols.</p>
         </footer>
       </div>
     </Router>

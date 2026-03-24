@@ -174,5 +174,22 @@ await emailService.schedule({
   to: subscribers,
   sendAt: new Date('2024-04-01T09:00:00Z')
 });`
+  },
+  {
+    id: '9',
+    title: 'Glassmorphism UI Library',
+    description: 'Set of elite Tailwind CSS components featuring advanced glassmorphism, background blurs, and organic gradients.',
+    fullDescription: 'A high-end component library designed for modern dApps. Includes frosted-glass sidebars, glowing buttons, and translucent card layouts. Each component is optimized for performance and uses hardware-accelerated CSS blurs for a premium feel.',
+    price: '0.11',
+    category: 'UI/UX',
+    seller: '0x7788...9900',
+    stats: { downloads: 145, likes: 58 },
+    lastUpdated: '2024-03-24',
+    codeSnippet: `<div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-8 shadow-2xl">
+  <h2 className="text-white font-bold text-2xl">Premium UI</h2>
+  <button className="mt-4 bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-2 rounded-lg text-white font-semibold">
+    Explore
+  </button>
+</div>`
   }
 ];

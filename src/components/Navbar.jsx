@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Wallet, Sun, Moon, ShoppingBag, PlusCircle, Menu, X, Zap } from 'lucide-react';
+import { Wallet, Sun, Moon, ShoppingBag, PlusCircle, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -43,79 +43,69 @@ const Navbar = () => {
 
   const linkStyle = {
     display: 'flex', alignItems: 'center', gap: 6,
-    fontWeight: 600, fontSize: '0.875rem',
-    color: isDarkMode ? '#cbd5e1' : '#374151',
+    fontWeight: 500, fontSize: '0.875rem',
+    color: '#9AA4AF', // Secondary text
     textDecoration: 'none',
-    padding: '0.35rem 0.75rem',
-    borderRadius: 10,
-    transition: 'background 0.18s, color 0.18s',
+    padding: '0.5rem 0.85rem',
+    borderRadius: 8,
+    transition: 'all 0.2s ease',
   };
 
   return (
-    <nav style={{
+    <nav className="glass" style={{
       position: 'sticky', top: 0, zIndex: 50,
-      backdropFilter: 'blur(16px) saturate(200%)',
-      WebkitBackdropFilter: 'blur(16px) saturate(200%)',
-      backgroundColor: isDarkMode ? 'rgba(6,6,18,0.88)' : 'rgba(255,255,255,0.84)',
-      borderBottom: isDarkMode ? '1px solid rgba(139,92,246,0.15)' : '1px solid rgba(139,92,246,0.10)',
-      boxShadow: scrolled
-        ? isDarkMode
-          ? '0 4px 32px rgba(0,0,0,0.45)'
-          : '0 4px 32px rgba(139,92,246,0.10)'
-        : 'none',
-      transition: 'box-shadow 0.3s ease, background-color 0.3s ease',
+      boxShadow: scrolled ? '0 8px 32px rgba(0,0,0,0.5)' : 'none',
+      transition: 'box-shadow 0.3s ease',
     }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 1.5rem', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
         {/* Logo */}
         <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
           <motion.div
-            whileHover={{ rotate: 15, scale: 1.08 }}
+            whileHover={{ rotate: 10, scale: 1.05 }}
             style={{
-              width: 38, height: 38, borderRadius: 12,
-              background: 'linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7)',
+              width: 36, height: 36, borderRadius: 10,
+              background: 'linear-gradient(135deg, #5B8CFF, #8B5CF6)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               color: 'white', fontWeight: 900, fontSize: 13,
-              boxShadow: '0 4px 16px rgba(139,92,246,0.40)',
             }}
           >
             CN
           </motion.div>
           <span style={{
-            fontWeight: 800, fontSize: '1.15rem',
-            background: 'linear-gradient(135deg, #6366f1, #a855f7)',
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
+            fontWeight: 800, fontSize: '1.25rem',
+            color: '#E6EDF3', // Primary text
+            letterSpacing: '-0.02em'
           }}>
             Code Nexus
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }} className="desktop-nav">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }} className="desktop-nav">
           <Link to="/" style={linkStyle}
-            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(139,92,246,0.08)'; e.currentTarget.style.color = '#7c3aed'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = isDarkMode ? '#cbd5e1' : '#374151'; }}
+            onMouseEnter={e => { e.currentTarget.style.color = '#E6EDF3'; e.currentTarget.style.background = '#1F2933'; }}
+            onMouseLeave={e => { e.currentTarget.style.color = '#9AA4AF'; e.currentTarget.style.background = 'transparent'; }}
           >
             <ShoppingBag size={16} /> Marketplace
           </Link>
           <Link to="/upload" style={linkStyle}
-            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(139,92,246,0.08)'; e.currentTarget.style.color = '#7c3aed'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = isDarkMode ? '#cbd5e1' : '#374151'; }}
+            onMouseEnter={e => { e.currentTarget.style.color = '#E6EDF3'; e.currentTarget.style.background = '#1F2933'; }}
+            onMouseLeave={e => { e.currentTarget.style.color = '#9AA4AF'; e.currentTarget.style.background = 'transparent'; }}
           >
             <PlusCircle size={16} /> Upload
           </Link>
 
-          <div style={{ width: 1, height: 24, background: 'rgba(139,92,246,0.15)', margin: '0 0.5rem' }} />
+          <div style={{ width: 1, height: 20, background: '#1F2933', margin: '0 0.5rem' }} />
 
-          {/* Dark mode toggle */}
+          {/* Dark mode toggle - simplified since we're dark-first */}
           <motion.button
-            whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.92 }}
+            whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}
             onClick={toggleDark}
             style={{
-              width: 38, height: 38, borderRadius: 10, border: 'none',
-              background: isDarkMode ? 'rgba(139,92,246,0.15)' : 'rgba(139,92,246,0.07)',
-              color: isDarkMode ? '#c4b5fd' : '#7c3aed',
+              width: 38, height: 38, borderRadius: 8, border: '1px solid #1F2933',
+              background: '#11161C',
+              color: '#9AA4AF',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               cursor: 'pointer',
             }}
@@ -131,7 +121,7 @@ const Navbar = () => {
 
           {/* Wallet */}
           <motion.button
-            whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
+            whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
             onClick={connectWallet}
             className="gradient-btn"
             style={{ marginLeft: '0.5rem', gap: 7 }}
@@ -139,17 +129,14 @@ const Navbar = () => {
             <Wallet size={16} />
             {walletAddress ? short(walletAddress) : 'Connect Wallet'}
             {walletAddress && (
-              <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
             )}
           </motion.button>
         </div>
 
         {/* Mobile toggle */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }} className="mobile-nav">
-          <button onClick={toggleDark} style={{ background: 'none', border: 'none', cursor: 'pointer', color: isDarkMode ? '#c4b5fd' : '#7c3aed', padding: 6 }}>
-            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: isDarkMode ? '#c4b5fd' : '#7c3aed', padding: 6 }}>
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9AA4AF', padding: 6 }}>
             {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
@@ -160,21 +147,22 @@ const Navbar = () => {
         {isMenuOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             style={{
               overflow: 'hidden',
-              background: isDarkMode ? 'rgba(6,6,18,0.95)' : 'rgba(255,255,255,0.97)',
-              borderTop: '1px solid rgba(139,92,246,0.10)',
+              background: '#0B0F14',
+              borderTop: '1px solid #1F2933',
               padding: '1rem 1.5rem',
             }}
           >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               {[{ to: '/', icon: <ShoppingBag size={16} />, label: 'Marketplace' }, { to: '/upload', icon: <PlusCircle size={16} />, label: 'Upload' }].map(item => (
-                <Link key={item.to} to={item.to} style={{ ...linkStyle, padding: '0.6rem 0.75rem' }} onClick={() => setIsMenuOpen(false)}>
+                <Link key={item.to} to={item.to} style={{ ...linkStyle, padding: '0.75rem 1rem' }} onClick={() => setIsMenuOpen(false)}>
                   {item.icon} {item.label}
                 </Link>
               ))}
-              <button onClick={() => { connectWallet(); setIsMenuOpen(false); }} className="gradient-btn" style={{ width: '100%', justifyContent: 'center', marginTop: 8 }}>
+              <div style={{ height: 1, background: '#1F2933', margin: '0.5rem 0' }} />
+              <button onClick={() => { connectWallet(); setIsMenuOpen(false); }} className="gradient-btn" style={{ width: '100%', justifyContent: 'center' }}>
                 <Wallet size={16} /> {walletAddress ? short(walletAddress) : 'Connect Wallet'}
               </button>
             </div>
