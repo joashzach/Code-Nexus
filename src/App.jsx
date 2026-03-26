@@ -5,6 +5,18 @@ import Upload from './pages/Upload';
 import ModuleDetail from './pages/ModuleDetail';
 import { Toaster } from 'react-hot-toast';
 
+const Logo = ({ size = 18, id = 'footer-logo-grad' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M11 2L2 14H10L9 22L20 10H12L13 2Z" fill={`url(#${id})`} stroke="white" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round" />
+    <defs>
+      <linearGradient id={id} x1="2" y1="2" x2="20" y2="22" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#9333EA" />
+        <stop offset="1" stopColor="#3B82F6" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
 /**
  * Main App component.
  * Sets up routing for the Code Nexus dApp using React Router.
@@ -25,7 +37,7 @@ function App() {
       }} />
 
       {/* Root wrapper: Dark-first theme */}
-      <div style={{ minHeight: '100vh', backgroundColor: '#0B0F14', color: '#E6EDF3' }}>
+      <div style={{ minHeight: '100vh' }}>
         <Navbar />
 
         <main className="pb-20">
@@ -44,15 +56,16 @@ function App() {
           padding: '4rem 1.5rem',
           textAlign: 'center',
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: '1.25rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: '1.5rem' }}>
             <div style={{
-              width: 32, height: 32,
-              background: 'linear-gradient(135deg, #5B8CFF, #8B5CF6)',
-              borderRadius: 8,
+              width: 38, height: 38,
+              background: 'rgba(255, 255, 255, 0.03)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: 10,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              color: 'white', fontWeight: 900, fontSize: 11
-            }}>CN</div>
-            <span style={{ fontSize: '1.25rem', fontWeight: 800, color: '#E6EDF3', letterSpacing: '-0.02em' }}>Code Nexus</span>
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)'
+            }}><Logo size={20} /></div>
+            <span style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.04em', textTransform: 'uppercase' }}>Code Nexus</span>
           </div>
           <p style={{ color: '#9AA4AF', fontSize: '0.9rem', maxWidth: 400, margin: '0 auto 2rem', lineHeight: 1.6 }}>
             The world's first decentralized code marketplace. Built on the blockchain, owned by the developer community.

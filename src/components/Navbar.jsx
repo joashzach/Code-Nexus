@@ -3,6 +3,18 @@ import { Link } from 'react-router-dom';
 import { Wallet, Sun, Moon, ShoppingBag, PlusCircle, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const Logo = ({ size = 22, id = 'logo-grad' }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M11 2L2 14H10L9 22L20 10H12L13 2Z" fill={`url(#${id})`} stroke="white" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round" />
+    <defs>
+      <linearGradient id={id} x1="2" y1="2" x2="20" y2="22" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#9333EA" />
+        <stop offset="1" stopColor="#3B82F6" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
 const Navbar = () => {
   const [walletAddress, setWalletAddress] = useState('');
   const [isDarkMode, setIsDarkMode]       = useState(false);
@@ -44,7 +56,7 @@ const Navbar = () => {
   const linkStyle = {
     display: 'flex', alignItems: 'center', gap: 6,
     fontWeight: 500, fontSize: '0.875rem',
-    color: '#9AA4AF', // Secondary text
+    color: 'var(--color-text-secondary)', // Secondary text
     textDecoration: 'none',
     padding: '0.5rem 0.85rem',
     borderRadius: 8,
@@ -62,20 +74,22 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
           <motion.div
-            whileHover={{ rotate: 10, scale: 1.05 }}
+            whileHover={{ rotate: 5, scale: 1.1, boxShadow: '0 0 25px rgba(168, 85, 247, 0.4)' }}
             style={{
-              width: 36, height: 36, borderRadius: 10,
-              background: 'linear-gradient(135deg, #5B8CFF, #8B5CF6)',
+              width: 42, height: 42, borderRadius: 12,
+              background: 'rgba(255, 255, 255, 0.03)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              color: 'white', fontWeight: 900, fontSize: 13,
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
             }}
           >
-            CN
+            <Logo size={24} />
           </motion.div>
           <span style={{
-            fontWeight: 800, fontSize: '1.25rem',
-            color: '#E6EDF3', // Primary text
-            letterSpacing: '-0.02em'
+            fontWeight: 800, fontSize: '1.5rem',
+            color: 'var(--color-text-primary)',
+            letterSpacing: '-0.04em',
+            textTransform: 'uppercase'
           }}>
             Code Nexus
           </span>
@@ -84,28 +98,28 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }} className="desktop-nav">
           <Link to="/" style={linkStyle}
-            onMouseEnter={e => { e.currentTarget.style.color = '#E6EDF3'; e.currentTarget.style.background = '#1F2933'; }}
-            onMouseLeave={e => { e.currentTarget.style.color = '#9AA4AF'; e.currentTarget.style.background = 'transparent'; }}
+            onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-text-primary)'; e.currentTarget.style.background = 'var(--color-border-subtle)'; }}
+            onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-text-secondary)'; e.currentTarget.style.background = 'transparent'; }}
           >
             <ShoppingBag size={16} /> Marketplace
           </Link>
           <Link to="/upload" style={linkStyle}
-            onMouseEnter={e => { e.currentTarget.style.color = '#E6EDF3'; e.currentTarget.style.background = '#1F2933'; }}
-            onMouseLeave={e => { e.currentTarget.style.color = '#9AA4AF'; e.currentTarget.style.background = 'transparent'; }}
+            onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-text-primary)'; e.currentTarget.style.background = 'var(--color-border-subtle)'; }}
+            onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-text-secondary)'; e.currentTarget.style.background = 'transparent'; }}
           >
             <PlusCircle size={16} /> Upload
           </Link>
 
-          <div style={{ width: 1, height: 20, background: '#1F2933', margin: '0 0.5rem' }} />
+          <div style={{ width: 1, height: 20, background: 'var(--color-border-subtle)', margin: '0 0.5rem' }} />
 
           {/* Dark mode toggle - simplified since we're dark-first */}
           <motion.button
             whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}
             onClick={toggleDark}
             style={{
-              width: 38, height: 38, borderRadius: 8, border: '1px solid #1F2933',
-              background: '#11161C',
-              color: '#9AA4AF',
+              width: 38, height: 38, borderRadius: 8, border: '1px solid var(--color-border-subtle)',
+              background: 'var(--color-bg-surface)',
+              color: 'var(--color-text-secondary)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               cursor: 'pointer',
             }}
@@ -121,22 +135,26 @@ const Navbar = () => {
 
           {/* Wallet */}
           <motion.button
-            whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+            whileHover={{ scale: 1.05, boxShadow: '0 8px 20px rgba(91, 140, 255, 0.3)' }} whileTap={{ scale: 0.95 }}
             onClick={connectWallet}
             className="gradient-btn"
-            style={{ marginLeft: '0.5rem', gap: 7 }}
+            style={{ marginLeft: '1rem', gap: 7, padding: '0.7rem 1.4rem' }}
           >
             <Wallet size={16} />
             {walletAddress ? short(walletAddress) : 'Connect Wallet'}
             {walletAddress && (
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
+              <motion.span 
+                animate={{ scale: [1, 1.4, 1] }} 
+                transition={{ duration: 1.5, repeat: Infinity }}
+                style={{ width: 8, height: 8, borderRadius: '50%', background: '#10b981', display: 'inline-block' }} 
+              />
             )}
           </motion.button>
         </div>
 
         {/* Mobile toggle */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }} className="mobile-nav">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9AA4AF', padding: 6 }}>
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-text-secondary)', padding: 6 }}>
             {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
@@ -150,8 +168,8 @@ const Navbar = () => {
             transition={{ duration: 0.2 }}
             style={{
               overflow: 'hidden',
-              background: '#0B0F14',
-              borderTop: '1px solid #1F2933',
+              background: 'var(--color-bg-base)',
+              borderTop: '1px solid var(--color-border-subtle)',
               padding: '1rem 1.5rem',
             }}
           >
@@ -161,7 +179,7 @@ const Navbar = () => {
                   {item.icon} {item.label}
                 </Link>
               ))}
-              <div style={{ height: 1, background: '#1F2933', margin: '0.5rem 0' }} />
+              <div style={{ height: 1, background: 'var(--color-border-subtle)', margin: '0.5rem 0' }} />
               <button onClick={() => { connectWallet(); setIsMenuOpen(false); }} className="gradient-btn" style={{ width: '100%', justifyContent: 'center' }}>
                 <Wallet size={16} /> {walletAddress ? short(walletAddress) : 'Connect Wallet'}
               </button>

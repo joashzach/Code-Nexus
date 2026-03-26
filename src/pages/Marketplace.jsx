@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { mockModules } from '../data/mockModules';
 import ModuleCard from '../components/ModuleCard';
-import { Search, SlidersHorizontal, PackageOpen } from 'lucide-react';
+import { Search, SlidersHorizontal, PackageOpen, Terminal } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CATEGORIES = ['All', 'Frontend', 'Backend', 'Blockchain', 'UI/UX', 'DevOps'];
@@ -47,27 +47,29 @@ const Marketplace = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
+          <div style={{ position: 'absolute', top: '-10%', left: '50%', transform: 'translateX(-50%)', width: '90%', height: '120%', background: 'radial-gradient(circle at center, rgba(91, 140, 255, 0.1) 0%, transparent 65%)', zIndex: -1, pointerEvents: 'none', filter: 'blur(80px)' }} />
           <h1 style={{
             fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
             fontWeight: 800,
-            lineHeight: 1,
+            lineHeight: 1.1,
             letterSpacing: '-0.04em',
-            marginBottom: '1.25rem',
-            color: '#E6EDF3', // Primary text
+            marginBottom: '1.5rem',
+            color: 'var(--color-text-primary)',
           }}>
-            The{' '}
+            A{' '}
             <span style={{ 
-              background: 'linear-gradient(135deg, #5B8CFF, #8B5CF6)', 
+              background: 'linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-secondary))', 
               WebkitBackgroundClip: 'text', 
               WebkitTextFillColor: 'transparent', 
               backgroundClip: 'text' 
             }}>
-              Code Marketplace
+              Web3-powered Marketplace
             </span>
-            {' '}for Web3
+            {' '}for Reusable Code
           </h1>
+          <div style={{ height: 2, width: 80, background: 'linear-gradient(90deg, transparent, var(--color-brand-primary), transparent)', margin: '0 auto 2.5rem' }} />
 
-          <p style={{ fontSize: '1.125rem', color: '#9AA4AF', maxWidth: 540, margin: '0 auto 2.5rem', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '1.125rem', color: 'var(--color-text-secondary)', maxWidth: 540, margin: '0 auto 2.5rem', lineHeight: 1.6 }}>
             Browse and buy production-ready code modules secured by smart contracts.
             Pay in ETH. Own it forever.
           </p>
@@ -75,7 +77,7 @@ const Marketplace = () => {
           {/* ── Search + Filter ── */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center', maxWidth: 680, margin: '0 auto' }}>
             <div style={{ position: 'relative', flex: '1 1 320px' }}>
-              <Search size={18} style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', color: '#6B7280', pointerEvents: 'none' }} />
+              <Search size={18} style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', color: 'var(--color-text-muted)', pointerEvents: 'none' }} />
               <input
                 type="text"
                 placeholder="Search modules…"
@@ -93,7 +95,7 @@ const Marketplace = () => {
               >
                 {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
               </select>
-              <div style={{ position: 'absolute', right: 16, top: '50%', transform: 'translateY(-50%)', color: '#6B7280', pointerEvents: 'none' }}>
+              <div style={{ position: 'absolute', right: 16, top: '50%', transform: 'translateY(-50%)', color: 'var(--color-text-muted)', pointerEvents: 'none' }}>
                 <SlidersHorizontal size={16} />
               </div>
             </div>
@@ -115,9 +117,9 @@ const Marketplace = () => {
                 padding: '6px 16px',
                 borderRadius: 8,
                 border: '1px solid',
-                borderColor: selectedCategory === cat ? '#5B8CFF' : '#1F2933',
-                background: selectedCategory === cat ? 'rgba(91, 140, 255, 0.1)' : '#11161C',
-                color: selectedCategory === cat ? '#5B8CFF' : '#9AA4AF',
+                borderColor: selectedCategory === cat ? 'var(--color-brand-primary)' : 'var(--color-border-subtle)',
+                background: selectedCategory === cat ? 'rgba(91, 140, 255, 0.1)' : 'var(--color-bg-surface)',
+                color: selectedCategory === cat ? 'var(--color-brand-primary)' : 'var(--color-text-secondary)',
                 fontWeight: 600,
                 fontSize: '0.8rem',
                 cursor: 'pointer',
@@ -157,11 +159,11 @@ const Marketplace = () => {
           ) : (
             <motion.div key="empty" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }}
               style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '8rem 2rem', textAlign: 'center', gap: '1.25rem' }}>
-              <div style={{ padding: '2.5rem', borderRadius: '50%', background: '#11161C', color: '#1F2933', border: '1px solid #1F2933' }}>
+              <div style={{ padding: '2.5rem', borderRadius: '50%', background: 'var(--color-bg-surface)', color: 'var(--color-border-subtle)', border: '1px solid var(--color-border-subtle)' }}>
                 <PackageOpen size={64} />
               </div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#E6EDF3' }}>No modules found</h3>
-              <p style={{ color: '#9AA4AF', maxWidth: 360, lineHeight: 1.6 }}>Try adjusting your search or category filter to find what you need.</p>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-text-primary)' }}>No modules found</h3>
+              <p style={{ color: 'var(--color-text-secondary)', maxWidth: 360, lineHeight: 1.6 }}>Try adjusting your search or category filter to find what you need.</p>
               <button onClick={() => { setSearchTerm(''); setSelectedCategory('All'); }} className="gradient-btn" style={{ marginTop: '0.5rem' }}>
                 Clear filters
               </button>

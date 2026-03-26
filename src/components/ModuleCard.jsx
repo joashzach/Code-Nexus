@@ -5,12 +5,12 @@ import { Code, Download, Heart, ShoppingCart } from 'lucide-react';
 
 // Refined category colors - more professional, less neon
 const categoryColor = {
-  Frontend:   { bg: 'rgba(91, 140, 255, 0.1)', text: '#5B8CFF', border: '#5B8CFF33' },
-  Backend:    { bg: 'rgba(139, 92, 246, 0.1)', text: '#8B5CF6', border: '#8B5CF633' },
-  Blockchain: { bg: 'rgba(16, 185, 129, 0.1)', text: '#10B981', border: '#10B98133' },
-  DevOps:     { bg: 'rgba(239, 68, 68, 0.1)',   text: '#EF4444', border: '#EF444433' },
-  'UI/UX':    { bg: 'rgba(244, 114, 182, 0.1)', text: '#F472B6', border: '#F472B633' },
-  Other:      { bg: 'rgba(154, 164, 175, 0.1)', text: '#6B7280', border: '#1F2933' },
+  Frontend:   { bg: 'rgba(91, 140, 255, 0.08)', text: '#5B8CFF', border: 'rgba(91, 140, 255, 0.2)' },
+  Backend:    { bg: 'rgba(139, 92, 246, 0.08)', text: '#A78BFA', border: 'rgba(139, 92, 246, 0.2)' },
+  Blockchain: { bg: 'rgba(16, 185, 129, 0.08)', text: '#34D399', border: 'rgba(16, 185, 129, 0.2)' },
+  DevOps:     { bg: 'rgba(239, 68, 68, 0.08)',   text: '#F87171', border: 'rgba(239, 68, 68, 0.2)' },
+  'UI/UX':    { bg: 'rgba(244, 114, 182, 0.08)', text: '#F472B6', border: 'rgba(244, 114, 182, 0.2)' },
+  Other:      { bg: 'rgba(156, 163, 175, 0.08)', text: '#9CA3AF', border: 'rgba(156, 163, 175, 0.2)' },
 };
 
 const ModuleCard = ({ module }) => {
@@ -44,8 +44,8 @@ const ModuleCard = ({ module }) => {
         {/* Icon */}
         <div style={{
           width: 44, height: 44, borderRadius: 10,
-          background: '#11161C',
-          border: '1px solid #1F2933',
+          background: 'var(--color-bg-surface)',
+          border: '1px solid var(--color-border-subtle)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           color: accent.text, flexShrink: 0,
         }}>
@@ -68,14 +68,14 @@ const ModuleCard = ({ module }) => {
       {/* Title */}
       <h3 className="line-clamp-1" style={{
         fontSize: '1.125rem', fontWeight: 700,
-        color: '#E6EDF3', marginBottom: '0.5rem',
+        color: 'var(--color-text-primary)', marginBottom: '0.5rem',
       }}>
         {module.title}
       </h3>
 
       {/* Description */}
       <p className="line-clamp-3" style={{
-        fontSize: '0.875rem', color: '#9AA4AF',
+        fontSize: '0.875rem', color: 'var(--color-text-secondary)',
         lineHeight: 1.6, flexGrow: 1, marginBottom: '1.5rem',
       }}>
         {module.description}
@@ -83,7 +83,7 @@ const ModuleCard = ({ module }) => {
 
       {/* Stats row */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: '1.25rem' }}>
-        <span style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.75rem', fontWeight: 600, color: '#6B7280' }}>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-text-muted)' }}>
           <Download size={14} /> {module.stats.downloads}
         </span>
         <button
@@ -91,7 +91,7 @@ const ModuleCard = ({ module }) => {
           style={{
             display: 'flex', alignItems: 'center', gap: 6,
             fontSize: '0.75rem', fontWeight: 600,
-            color: liked ? '#EF4444' : '#6B7280',
+            color: liked ? '#EF4444' : 'var(--color-text-muted)',
             background: 'none', border: 'none', cursor: 'pointer',
             padding: 0, transition: 'color 0.2s',
           }}
@@ -106,12 +106,12 @@ const ModuleCard = ({ module }) => {
       {/* Price + Buy */}
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        borderTop: '1px solid #1F2933', paddingTop: '1.25rem',
+        borderTop: '1px solid var(--color-border-subtle)', paddingTop: '1.25rem',
       }}>
         <div>
-          <div style={{ fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#6B7280', marginBottom: 2 }}>Price</div>
-          <div style={{ fontSize: '1.125rem', fontWeight: 800, color: '#E6EDF3' }}>
-            {module.price} <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#9AA4AF' }}>ETH</span>
+          <div style={{ fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--color-text-muted)', marginBottom: 2 }}>Price</div>
+          <div style={{ fontSize: '1.125rem', fontWeight: 800, color: 'var(--color-text-primary)' }}>
+            {module.price} <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-secondary)' }}>ETH</span>
           </div>
         </div>
 

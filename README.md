@@ -1,4 +1,4 @@
-# React + Vite
+# A Web3-powered Marketplace for Reusable Code
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

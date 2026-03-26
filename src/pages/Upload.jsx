@@ -118,13 +118,13 @@ const Upload = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="bg-[#11161C] text-[#5B8CFF] font-bold px-4 py-1.5 rounded-full text-[10px] uppercase tracking-widest border border-[#1F2933]">
+          <span className="bg-surface text-brand-primary font-bold px-4 py-1.5 rounded-full text-[10px] uppercase tracking-widest border border-subtle">
             Partner Program
           </span>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-[#E6EDF3] mt-6 mb-4 tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-primary mt-6 mb-4 tracking-tight">
             List Your Code <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5B8CFF] to-[#8B5CF6]">Module</span>
           </h1>
-          <p className="text-[#9AA4AF] max-w-xl mx-auto mt-2 text-lg">
+          <p className="text-secondary max-w-xl mx-auto mt-2 text-lg">
             Turn your code into a digital asset. Upload, set your price, and earn ETH for every purchase.
           </p>
         </motion.div>
@@ -161,8 +161,8 @@ const Upload = () => {
               className={cn(
                 "relative group flex flex-col items-center justify-center border-2 border-dashed rounded-2xl p-12 transition-all duration-300 cursor-pointer overflow-hidden",
                 isDragging 
-                  ? "border-[#5B8CFF] bg-[#5B8CFF]/5" 
-                  : "border-[#1F2933] bg-[#0F141A] hover:border-[#2A3441] hover:bg-[#11161C]",
+                  ? "border-brand-primary bg-brand-primary/5" 
+                  : "border-subtle bg-[#0F141A] dark:bg-[#0F141A] hover:border-text-secondary hover:bg-surface",
                 errors.file && "border-red-500/30 bg-red-500/5 text-red-400"
               )}
               onClick={() => document.getElementById('file-upload').click()}
@@ -177,11 +177,11 @@ const Upload = () => {
               
               {!formData.file ? (
                 <>
-                  <div className="w-16 h-16 bg-[#11161C] text-[#6B7280] rounded-xl flex items-center justify-center mb-6 border border-[#2A3441] group-hover:text-[#5B8CFF] group-hover:border-[#5B8CFF] transition-all">
+                  <div className="w-16 h-16 bg-surface text-muted rounded-xl flex items-center justify-center mb-6 border border-subtle group-hover:text-brand-primary group-hover:border-brand-primary transition-all">
                     <UploadCloud size={32} />
                   </div>
-                  <p className="text-[#E6EDF3] font-bold text-xl mb-1">Drag & drop your module</p>
-                  <p className="text-[#6B7280] text-sm">Supported files: .zip, .js, .ts (Max 50MB)</p>
+                  <p className="text-primary font-bold text-xl mb-1">Drag & drop your module</p>
+                  <p className="text-muted text-sm">Supported files: .zip, .js, .ts (Max 50MB)</p>
                 </>
               ) : (
                 <div className="flex flex-col items-center text-center">
@@ -204,7 +204,7 @@ const Upload = () => {
 
               {/* Success Decoration */}
               {formData.file && (
-                <div className="absolute top-4 right-4 text-[#5B8CFF] bg-[#11161C] rounded-full p-2 border border-[#5B8CFF]/20">
+                <div className="absolute top-4 right-4 text-brand-primary bg-surface rounded-full p-2 border border-brand-primary/20">
                   <Check size={18} />
                 </div>
               )}
@@ -218,7 +218,7 @@ const Upload = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-2">
-              <label className="text-xs font-bold text-[#9AA4AF] uppercase tracking-widest">Listing Title</label>
+              <label className="text-xs font-bold text-secondary uppercase tracking-widest">Listing Title</label>
               <input 
                 name="title"
                 value={formData.title}
@@ -272,9 +272,9 @@ const Upload = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold text-[#9AA4AF] uppercase tracking-widest">Listing Price (ETH)</label>
+            <label className="text-xs font-bold text-secondary uppercase tracking-widest">Listing Price (ETH)</label>
             <div className="relative group">
-              <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none font-bold text-[#6B7280]">
+              <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none font-bold text-muted">
                 Ξ
               </div>
               <input 
