@@ -110,14 +110,21 @@ const Upload = () => {
   };
 
   return (
+<<<<<<< HEAD
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '5rem 1.5rem 4rem' }}>
     <div style={{ width: '100%', maxWidth: 700 }}>
       <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+=======
+    <div className="max-w-4xl mx-auto px-6 py-20 space-y-12 min-h-screen">
+      
+      <div className="text-center space-y-4">
+>>>>>>> cbca8ecb9ce04a99ccb5b839a3b270fffdbd6064
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
+<<<<<<< HEAD
           <span style={{ display: 'inline-block', background: 'var(--color-bg-surface)', color: 'var(--color-brand-primary)', fontWeight: 700, padding: '4px 14px', borderRadius: 99, fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.09em', border: '1px solid var(--color-border-subtle)', marginBottom: '1.25rem' }}>
             Partner Program
           </span>
@@ -125,6 +132,15 @@ const Upload = () => {
             List Your Code <span style={{ color: 'var(--color-brand-primary)' }}>Module</span>
           </h1>
           <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.95rem', lineHeight: 1.65, maxWidth: 420, margin: '0 auto' }}>
+=======
+          <span className="bg-surface text-brand-primary font-bold px-4 py-1.5 rounded-full text-[10px] uppercase tracking-widest border border-subtle">
+            Partner Program
+          </span>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-primary mt-6 mb-4 tracking-tight">
+            List Your Code <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5B8CFF] to-[#8B5CF6]">Module</span>
+          </h1>
+          <p className="text-secondary max-w-xl mx-auto mt-2 text-lg">
+>>>>>>> cbca8ecb9ce04a99ccb5b839a3b270fffdbd6064
             Turn your code into a digital asset. Upload, set your price, and earn ETH for every purchase.
           </p>
         </motion.div>
@@ -134,7 +150,11 @@ const Upload = () => {
         initial={{ opacity: 0, y: 25 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.15, duration: 0.5 }}
+<<<<<<< HEAD
         style={{ background: 'var(--color-bg-card)', border: '1px solid var(--color-border-subtle)', borderRadius: 16, boxShadow: 'var(--shadow-soft)', position: 'relative', overflow: 'hidden', padding: '2.5rem' }}
+=======
+        className="card p-8 md:p-12 relative overflow-hidden"
+>>>>>>> cbca8ecb9ce04a99ccb5b839a3b270fffdbd6064
       >
         <AnimatePresence>
           {isSuccess && (
@@ -329,7 +349,10 @@ const Upload = () => {
         </form>
       </motion.div>
     </div>
+<<<<<<< HEAD
     </div>
+=======
+>>>>>>> cbca8ecb9ce04a99ccb5b839a3b270fffdbd6064
   );
 };
 

@@ -47,6 +47,10 @@ const Marketplace = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
+<<<<<<< HEAD
+=======
+          <div style={{ position: 'absolute', top: '-10%', left: '50%', transform: 'translateX(-50%)', width: '90%', height: '120%', background: 'radial-gradient(circle at center, rgba(91, 140, 255, 0.1) 0%, transparent 65%)', zIndex: -1, pointerEvents: 'none', filter: 'blur(80px)' }} />
+>>>>>>> cbca8ecb9ce04a99ccb5b839a3b270fffdbd6064
           <h1 style={{
             fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
             fontWeight: 800,
