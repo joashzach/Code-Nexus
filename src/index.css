@@ -60,12 +60,9 @@ html {
   background-color: var(--color-bg-base);
 }
 
-<<<<<<< HEAD
 * { outline: none; }
 *:focus-visible { outline: 2px solid var(--color-brand-primary); outline-offset: 2px; }
 
-=======
->>>>>>> cbca8ecb9ce04a99ccb5b839a3b270fffdbd6064
 body {
   min-height: 100vh;
   color: var(--color-text-primary);
@@ -171,15 +168,9 @@ p {
 }
 
 .card:hover {
-<<<<<<< HEAD
   transform: translateY(-4px);
   border-color: var(--color-brand-primary);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
-=======
-  transform: translateY(-12px) scale(1.02);
-  border-color: var(--color-brand-primary);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 15px rgba(91, 140, 255, 0.15);
->>>>>>> cbca8ecb9ce04a99ccb5b839a3b270fffdbd6064
 }
 
 .premium-card {
@@ -205,10 +196,6 @@ input, select, textarea {
 
 input:focus, select:focus, textarea:focus {
   border-color: var(--color-brand-primary);
-<<<<<<< HEAD
-=======
-  box-shadow: 0 0 0 2px rgba(91, 140, 255, 0.15);
->>>>>>> cbca8ecb9ce04a99ccb5b839a3b270fffdbd6064
   background-color: var(--color-bg-surface);
 }
 
